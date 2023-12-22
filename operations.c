@@ -6,13 +6,13 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 20:58:45 by julian            #+#    #+#             */
-/*   Updated: 2023/12/22 13:43:43 by julian           ###   ########.fr       */
+/*   Updated: 2023/12/22 18:41:15 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    swap(t_stack **stack)
+void    swap(t_stack **stack)
 {
     t_stack *tmp;
 
@@ -25,7 +25,21 @@ int    swap(t_stack **stack)
     }
 }
 
-int   push(t_stack **stack1, t_stack **stack2)
+int sa(t_stack **stack_a)
+{
+    swap(stack_a);
+    ft_putendl_fd("sa", 1);
+    return (0);
+}
+
+int sb(t_stack **stack_b)
+{
+    swap(stack_b);
+    ft_putendl_fd("sb", 1);
+    return (0);
+}
+
+void   push(t_stack **stack1, t_stack **stack2)
 {
     t_stack *tmp;
 
@@ -36,10 +50,23 @@ int   push(t_stack **stack1, t_stack **stack2)
         tmp->next = *stack2;
         *stack2 = tmp;
     }
-    ft_putendl_fd("pb", 1);
 }
 
-int   rotate(t_stack **stack)
+int pa(t_stack **stack_a, t_stack **stack_b)
+{
+    push(stack_a, stack_b);
+    ft_putendl_fd("pa", 1);
+    return (0);
+}
+
+int pb(t_stack **stack_b, t_stack **stack_a)
+{
+    push(stack_b, stack_a);
+    ft_putendl_fd("pb", 1);
+    return (0);
+}
+
+void   rotate(t_stack **stack)
 {
     t_stack *tmp;
     t_stack *tmp2;
@@ -54,7 +81,20 @@ int   rotate(t_stack **stack)
         tmp2->next = tmp;
         tmp->next = NULL;
     }
+}
+
+int ra(t_stack **stack_a)
+{
+    rotate(stack_a);
     ft_putendl_fd("ra", 1);
+    return (0);
+}
+
+int rb(t_stack **stack_b)
+{
+    rotate(stack_b);
+    ft_putendl_fd("rb", 1);
+    return (0);
 }
 
 void    reverse_rotate(t_stack **stack)
@@ -74,28 +114,40 @@ void    reverse_rotate(t_stack **stack)
     }
 }
 
-void    swap_both(t_stack **stack1, t_stack **stack2)
+int reverse_rotate_a(t_stack **stack_a)
+{
+    reverse_rotate(stack_a);
+    ft_putendl_fd("rra", 1);
+    return (0);
+}
+
+int reverse_rotate_b(t_stack **stack_b)
+{
+    reverse_rotate(stack_b);
+    ft_putendl_fd("rrb", 1);
+    return (0);
+}
+
+int   swap_both(t_stack **stack1, t_stack **stack2)
 {
     swap(stack1);
     swap(stack2);
+    ft_putendl_fd("ss", 1);
+    return (0);
 }
 
-void    push_both(t_stack **stack1, t_stack **stack2)
-{
-    push(stack1, stack2);
-    push(stack2, stack1);
-}
-
-void    rotate_both(t_stack **stack1, t_stack **stack2)
+int    rotate_both(t_stack **stack1, t_stack **stack2)
 {
     rotate(stack1);
     rotate(stack2);
+    ft_putendl_fd("rr", 1);
 }
 
-void    reverse_rotate_both(t_stack **stack1, t_stack **stack2)
+int   reverse_rotate_both(t_stack **stack1, t_stack **stack2)
 {
     reverse_rotate(stack1);
     reverse_rotate(stack2);
+    ft_putendl_fd("rrr", 1);
 }
 
 void    print_stack(t_stack *stack)
