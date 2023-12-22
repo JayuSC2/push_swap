@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 20:58:45 by julian            #+#    #+#             */
-/*   Updated: 2023/12/21 21:07:10 by julian           ###   ########.fr       */
+/*   Updated: 2023/12/22 11:42:54 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,21 @@ void    push(t_stack **stack1, t_stack **stack2)
         tmp->next = *stack2;
         *stack2 = tmp;
     }
-} 
+}
+void    rotate(t_stack **stack)
+{
+    t_stack *tmp;
+    t_stack *tmp2;
+
+    if (*stack && (*stack)->next)
+    {
+        tmp = *stack;
+        tmp2 = *stack;
+        *stack = (*stack)->next;
+        while (tmp2->next)
+            tmp2 = tmp2->next;
+        tmp2->next = tmp;
+        tmp->next = NULL;
+    }
+}
+
