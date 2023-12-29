@@ -14,7 +14,7 @@
 
 void   print_error(void)
 {
-    ft_putendl_fd("Error\n", 2);
+    ft_putendl_fd("Error", 2);
     exit(1);
 }
 
@@ -24,19 +24,6 @@ int	ft_isspace(int input)
 		return (1);
 	return (0);
 }
-
-/* void   check_minmax(t_list *stack)
-{
-    t_list *tmp;
-
-    tmp = stack;
-    while (tmp)
-    {
-        if (tmp->index > 2147483647 || tmp->index < -2147483648)
-            print_error();
-        tmp = tmp->next;
-    }
-} */
 
 void   check_duplicates(t_list *stack)
 {

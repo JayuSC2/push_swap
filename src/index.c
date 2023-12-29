@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_list	*get_next_min(t_list **stack)
+static t_list	*get_next_min(t_list **stack)
 {
 	t_list	*head;
 	t_list	*min;

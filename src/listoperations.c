@@ -21,6 +21,7 @@ t_list *ft_lstnew(int value)
 		return (NULL);
 	new->value = value;
 	new->index = -1;
+	new->next = NULL;
 	return (new);
 }
 int ft_lstsize(t_list *stack)
@@ -39,7 +40,11 @@ int ft_lstsize(t_list *stack)
 t_list *ft_lstlast(t_list *stack)
 {
 	while (stack->next != NULL)
+	{	
 		stack = stack->next;
+		if (stack->next == NULL)
+			return (stack);
+	}			
 	return(stack);
 }
 
@@ -55,6 +60,6 @@ void ft_lstadd_back(t_list **stack, t_list *new)
     else
     {
         *stack = new;
-        new->next = NULL;
+        (*stack)->next = NULL;
     }
 }

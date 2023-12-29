@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-static void   stack_init(t_list **stack, int argc, char **argv)
+/* static void   stack_init(t_list **stack, int argc, char **argv)
 {
+    t_list *tmp;
     int i;
     int num;
-    t_list *tmp;
-
+    
     i = 1;
     if (argc == 2)
         argv = ft_split(argv[1], ' ');
@@ -31,6 +31,32 @@ static void   stack_init(t_list **stack, int argc, char **argv)
     check_duplicates(*stack);
     //check_minmax(*stack);
     index_stack(stack);
+}
+ */
+
+static void	stack_init(t_list **stack, int argc, char **argv)
+{
+	t_list	*new;
+	char	**args;
+	int		i;
+
+	i = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+	{
+		i = 1;
+		args = argv;
+	}
+	while (args[i])
+	{
+		new = ft_lstnew(ft_atoi(args[i]));
+		ft_lstadd_back(stack, new);
+		i++;
+	}
+	index_stack(stack);
+	if (argc == 2)
+		ft_free(args);
 }
 
 int main(int argc, char **argv)
@@ -54,8 +80,8 @@ int main(int argc, char **argv)
         return (0);
     }
     radix_sort(stack_a, stack_b);
-    if (argc == 2)
-        ft_free(argv);
+    /* if (argc == 2)
+        ft_free(argv); */
     free_stack(*stack_a);
     free_stack(*stack_b);
     return (0);
