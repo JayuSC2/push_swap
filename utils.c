@@ -12,11 +12,53 @@
 
 #include "push_swap.h"
 
-static void   print_error(void)
+void    print_stack(t_list *stack)
 {
-    ft_putendl_fd("Error", 2);
-    exit(1);
+    while (stack)
+    {
+        ft_putnbr_fd (stack->value, 1);
+		ft_putchar_fd(' ', 1);
+        stack = stack->next;
+    }
 }
+
+int	is_sorted(t_list **stack)
+{
+	t_list	*head;
+
+	head = *stack;
+	while (head && head->next)
+	{
+		if (head->value > head->next->value)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}
+
+void ft_free(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
+
+void free_stack(t_list *stack)
+{
+	t_list *tmp;
+
+	while (stack)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
+	}
+	free(stack);
+}
+
 
 long	ft_atol(const char *str)
 {
@@ -44,28 +86,21 @@ long	ft_atol(const char *str)
 	return (num * sign);
 }
 
-int	ft_isspace(int input)
+int ft_isnumber(char *str)
 {
-	if (input == ' ' || input == '\t' || input == '\n' || input == '\v' || input == '\f' || input == '\r')
-		return (1);
-	return (0);
+	int i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-static void   check_duplicates(t_stack *stack)
-{
-    t_stack *tmp;
-    t_stack *tmp2;
-
-    tmp = stack;
-    while (tmp)
-    {
-        tmp2 = tmp->next;
-        while (tmp2)
-        {
-            if (tmp->value == tmp2->value)
-                print_error();
-            tmp2 = tmp2->next;
-        }
-        tmp = tmp->next;
-    }
-}
