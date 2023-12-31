@@ -85,6 +85,8 @@ int  push(t_list **stack1, t_list **stack2)
 
 int pa(t_list **stack_a, t_list **stack_b)
 {
+    if (push(stack_a, stack_b) == -1)
+        return (-1);
     push(stack_a, stack_b);
     ft_putendl_fd("pa", 1);
     return (0);
@@ -92,6 +94,8 @@ int pa(t_list **stack_a, t_list **stack_b)
 
 int pb(t_list **stack_b, t_list **stack_a)
 {
+    if (push(stack_b, stack_a) == -1)
+        return (-1);
     push(stack_b, stack_a);
     ft_putendl_fd("pb", 1);
     return (0);
@@ -117,13 +121,16 @@ int   rotate(t_list **stack)
 
 int ra(t_list **stack_a)
 {
-    rotate(stack_a);
+    if (rotate(stack_a) == -1)
+        return (-1);
     ft_putendl_fd("ra", 1);
     return (0);
 }
 
 int rb(t_list **stack_b)
 {
+    if (rotate(stack_b) == -1)
+        return (-1);
     rotate(stack_b);
     ft_putendl_fd("rb", 1);
     return (0);
