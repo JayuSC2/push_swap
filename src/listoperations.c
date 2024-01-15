@@ -51,6 +51,7 @@ t_list *ft_lstlast(t_list *stack)
 void ft_lstadd_back(t_list **stack, t_list *new)
 {
 	t_list *last_element;
+	
     if (*stack)
     {
         last_element = ft_lstlast(*stack);

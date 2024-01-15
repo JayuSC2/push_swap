@@ -75,15 +75,15 @@ int main(int argc, char **argv)
     stack_init(stack_a, argc, argv);
     if (is_sorted(stack_a))
     {
-        free_stack(*stack_a);
-        free_stack(*stack_b);
+        free_stack(stack_a);
+        free_stack(stack_b);
         return (0);
     }
     radix_sort(stack_a, stack_b);
     /* if (argc == 2)
         ft_free(argv); */
-    free_stack(*stack_a);
-    free_stack(*stack_b);
+    free_stack(stack_a);
+    free_stack(stack_b);
     return (0);
 }
 

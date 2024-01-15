@@ -24,14 +24,14 @@ void    print_stack(t_list *stack)
 
 int	is_sorted(t_list **stack)
 {
-	t_list	*head;
+	t_list	*top;
 
-	head = *stack;
-	while (head && head->next)
+	top = *stack;
+	while (top && top->next)
 	{
-		if (head->value > head->next->value)
+		if (top->value > top->next->value)
 			return (0);
-		head = head->next;
+		top = top->next;
 	}
 	return (1);
 }
@@ -46,14 +46,16 @@ void ft_free(char **str)
 	free(str);
 }
 
-void free_stack(t_list *stack)
+void	free_stack(t_list **stack)
 {
-	t_list *tmp;
+	t_list	*top;
+	t_list	*tmp;
 
-	while (stack)
+	top = *stack;
+	while (top)
 	{
-		tmp = stack;
-		stack = stack->next;
+		tmp = top;
+		top = top->next;
 		free(tmp);
 	}
 	free(stack);

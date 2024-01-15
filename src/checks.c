@@ -25,22 +25,22 @@ int	ft_isspace(int input)
 	return (0);
 }
 
-void   check_duplicates(t_list *stack)
+void   check_duplicates(int argc, char **argv)
 {
-    t_list *tmp;
-    t_list *tmp2;
+    int i;
+    int j;
 
-    tmp = stack;
-    while (tmp)
+    i = 1;
+    while (i < argc)
     {
-        tmp2 = tmp->next;
-        while (tmp2)
+        j = i + 1;
+        while (j < argc)
         {
-            if (tmp->index == tmp2->index)
+            if (ft_strncmp(argv[i], argv[j], ft_strlen(argv[i])) == 0)
                 print_error();
-            tmp2 = tmp2->next;
+            j++;
         }
-        tmp = tmp->next;
+        i++;
     }
 }
 
@@ -69,4 +69,5 @@ void   ft_check_args(int argc, char **argv)
         }
         i++;
     }
+    check_duplicates(argc, argv);
 }

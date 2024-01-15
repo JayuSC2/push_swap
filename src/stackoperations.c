@@ -100,8 +100,21 @@ int pb(t_list **stack_b, t_list **stack_a)
     ft_putendl_fd("pb", 1);
     return (0);
 }
+int	rotate(t_list **stack)
+{
+	t_list	*head;
+	t_list	*tail;
 
-int   rotate(t_list **stack)
+	if (ft_lstsize(*stack) < 2)
+		return (-1);
+	head = *stack;
+	tail = ft_lstlast(head);
+	*stack = head->next;
+	head->next = NULL;
+	tail->next = head;
+	return (0);
+}
+/* int   rotate(t_list **stack)
 {
     t_list *tmp;
     t_list *tmp2;
@@ -117,7 +130,7 @@ int   rotate(t_list **stack)
         tmp->next = NULL;
     }
     return (0);
-}
+} */
 
 int ra(t_list **stack_a)
 {
