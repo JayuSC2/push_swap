@@ -34,7 +34,7 @@ int pb(t_list **stack_b, t_list **stack_a);
 int   rotate(t_list **stack);
 int ra(t_list **stack_a);
 int rb(t_list **stack_b);
-void   reverse_rotate(t_list **stack);
+void   rr(t_list **stack);
 int rra(t_list **stack_a);
 int rrb(t_list **stack_b);
 
@@ -54,6 +54,7 @@ void	index_stack(t_list **stack);
 //static t_list	*get_next_min(t_list **stack);
 
 void    radix_sort(t_list **stack_a, t_list **stack_b);
+void    smol_sort(t_list **stack_a);
 //static int		get_max_bits(t_list *stack);
 
 t_list *ft_lstnew(int value);

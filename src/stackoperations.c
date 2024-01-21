@@ -149,7 +149,7 @@ int rb(t_list **stack_b)
     return (0);
 }
 
-void    reverse_rotate(t_list **stack)
+void    rr(t_list **stack)
 {
     t_list *tmp;
     t_list *tmp2;
@@ -166,16 +166,16 @@ void    reverse_rotate(t_list **stack)
     }
 }
 
-int reverse_rotate_a(t_list **stack_a)
+int rra(t_list **stack_a)
 {
-    reverse_rotate(stack_a);
+    rr(stack_a);
     ft_putendl_fd("rra", 1);
     return (0);
 }
 
-int reverse_rotate_b(t_list **stack_b)
+int rrb(t_list **stack_b)
 {
-    reverse_rotate(stack_b);
+    rr(stack_b);
     ft_putendl_fd("rrb", 1);
     return (0);
 }
@@ -198,8 +198,8 @@ int    rotate_both(t_list **stack1, t_list **stack2)
 
 int   reverse_rotate_both(t_list **stack1, t_list **stack2)
 {
-    reverse_rotate(stack1);
-    reverse_rotate(stack2);
+    rr(stack1);
+    rr(stack2);
     ft_putendl_fd("rrr", 1);
     return (0);
 }
