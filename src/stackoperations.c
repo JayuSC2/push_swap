@@ -12,9 +12,10 @@
 
 #include "push_swap.h"
 
-/* int swap(t_stack **stack)
+
+/* int swap(t_list **stack)
 {
-    t_stack *tmp;
+    t_list *tmp;
 
     if (ft_lstsize(*stack) < 2)
         return (-1);
@@ -25,7 +26,9 @@
         tmp->next = *stack;
         *stack = tmp;
     }
+    return (0);
 } */
+
 void ft_swap(int *a, int *b)
 {
     int tmp;

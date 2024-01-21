@@ -41,7 +41,10 @@ static void stack_init(t_list **stack, int argc, char **argv)
 
     i = 1;
     if (argc == 2)
+    { 
+        i = 0;
         argv = ft_split(argv[1], ' ');
+    } 
     while (argv[i])
     {
         new = ft_lstnew(ft_atoi(argv[i]));

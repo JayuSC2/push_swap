@@ -6,7 +6,7 @@
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:51:41 by julian            #+#    #+#             */
-/*   Updated: 2024/01/21 17:24:53 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/21 20:10:00 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,24 @@ void sort_3(t_list **stack_a)
     int b;
     int c;
 
-    a = (*stack_a)->value;
-    b = (*stack_a)->next->value;
-    c = (*stack_a)->next->next->value;
-
-    if (a > b && b > c)
+    a = (*stack_a)->index;
+    b = (*stack_a)->next->index;
+    c = (*stack_a)->next->next->index;
+    if (a > b && b < c && a < c)
         sa(stack_a);
-    else if (a > b && b < c && a < c)
-        ra(stack_a);
-    else if (a > b && b < c && a > c)
+    else if (a > b && b > c && a > c)
+    {
+        sa(stack_a);
         rra(stack_a);
-    else if (a < b && b > c && a > c)
-        sa(stack_a);
+    }
+    else if (a > b && b < c && a > c)
+        ra(stack_a);
     else if (a < b && b > c && a < c)
+    {
+        sa(stack_a);
+        ra(stack_a);
+    }
+    else if (a < b && b > c && a > c)
         rra(stack_a);
 }
 
