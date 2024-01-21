@@ -76,7 +76,7 @@ int main(int argc, char **argv)
         free_stack(stack_b);
         return (0);
     }
-    smol_sort(stack_a);
+    smol_sort(stack_a, stack_b);
     //radix_sort(stack_a, stack_b);
     /* if (argc == 2)
         ft_free(argv); */

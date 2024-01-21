@@ -54,7 +54,7 @@ void	index_stack(t_list **stack);
 //static t_list	*get_next_min(t_list **stack);
 
 void    radix_sort(t_list **stack_a, t_list **stack_b);
-void    smol_sort(t_list **stack_a);
+void    smol_sort(t_list **stack_a, t_list **stack_b);
 //static int		get_max_bits(t_list *stack);
 
 t_list *ft_lstnew(int value);
