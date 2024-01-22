@@ -59,7 +59,6 @@ void free_stack(t_list *stack)
 	free(stack);
 }
 
-
 long	ft_atol(const char *str)
 {
 	int	i;

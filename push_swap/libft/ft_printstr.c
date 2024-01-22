@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 17:27:55 by juitz             #+#    #+#             */
-/*   Updated: 2023/12/21 19:23:35 by julian           ###   ########.fr       */
+/*   Created: 2023/09/19 19:46:03 by juitz             #+#    #+#             */
+/*   Updated: 2024/01/02 16:45:04 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_printstr(char *s)
 {
-	t_list *last_element;
-	last_element = ft_lstlast(*lst);
-	last_element->next = new;
+	if (!s)
+		return (write(1, "(null)", 6));
+	if (s != 0)
+	{
+		write (1, s, ft_strlen(s));
+	}
+	return (ft_strlen(s));
 }
-int	main(void)
+
+/* int	main(void)
 {
-	t_list *first_element;
-	
-}
+	char str[] = "";
+	ft_putstr(str);
+} 
+ */
