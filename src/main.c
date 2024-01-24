@@ -55,7 +55,14 @@ static void stack_init(t_list **stack, int argc, char **argv)
     if (argc == 2)
         ft_free(argv);
 }
+void sort_stack(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_lstsize(*stack_a) > 5)
+		radix_sort(stack_a, stack_b);
+	else
+		smol_sort(stack_a, stack_b);
 
+}
 int main(int argc, char **argv)
 {
     t_list **stack_a;
@@ -71,8 +78,7 @@ int main(int argc, char **argv)
     stack_init(stack_a, argc, argv);
     if (is_sorted(stack_a))
 		return (free_stack(stack_a), free_stack(stack_b), 0);
-    smol_sort(stack_a, stack_b);
-    radix_sort(stack_a, stack_b);
+	sort_stack(stack_a, stack_b);
     /* if (argc == 2)
         ft_free(argv); */
     print_stack(*stack_a);
