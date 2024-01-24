@@ -61,7 +61,6 @@ int main(int argc, char **argv)
     t_list **stack_a;
     t_list **stack_b;
 
-    
     if (argc < 2)
         return (-1);
     ft_check_args(argc, argv);
@@ -71,13 +70,9 @@ int main(int argc, char **argv)
     *stack_b = NULL;
     stack_init(stack_a, argc, argv);
     if (is_sorted(stack_a))
-    {
-        free_stack(stack_a);
-        free_stack(stack_b);
-        return (0);
-    }
+		return (free_stack(stack_a), free_stack(stack_b), 0);
     smol_sort(stack_a, stack_b);
-    //radix_sort(stack_a, stack_b);
+    radix_sort(stack_a, stack_b);
     /* if (argc == 2)
         ft_free(argv); */
     print_stack(*stack_a);

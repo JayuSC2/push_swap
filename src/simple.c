@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:51:41 by julian            #+#    #+#             */
-/*   Updated: 2024/01/21 20:45:02 by julian           ###   ########.fr       */
+/*   Updated: 2024/01/22 13:17:13 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void sort_4(t_list **stack_a, t_list **stack_b)
     i = 0;
     while (i < len - 3)
     {
-        pb(stack_a, stack_b);
+        pb(stack_b, stack_a);
         i++;
     }
     sort_3(stack_a);
