@@ -6,11 +6,27 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:51:41 by julian            #+#    #+#             */
-/*   Updated: 2024/01/24 15:16:01 by juitz            ###   ########.fr       */
+/*   Updated: 2024/01/24 18:41:19 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_list	*get_next_min(t_list **stack)
+{
+	t_list	*head;
+	t_list	*min;
+
+	min = NULL;
+	head = *stack;
+	while (head)
+	{
+		if ((head->index == -1) && (!min || head->value < min->value))
+			min = head;
+		head = head->next;
+	}
+	return (min);
+}
 
 void sort_3(t_list **stack_a)
 {
@@ -46,7 +62,8 @@ void sort_4(t_list **stack_a, t_list **stack_b)
 
     len = ft_lstsize(*stack_a);
     i = 0;
-    while (i < len - 3)
+    while (get_next_min(stack_a) && i < len - 3)
+	//while (i < len - 3)
     {
         pb(stack_b, stack_a);
         i++;
