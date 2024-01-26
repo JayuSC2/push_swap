@@ -25,7 +25,6 @@ static t_list	*get_next_min(t_list **stack)
 			min = head;
 		head = head->next;
 	}
-
 	return (min);
 }
 

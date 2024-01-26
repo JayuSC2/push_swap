@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:51:41 by julian            #+#    #+#             */
-/*   Updated: 2024/01/24 18:41:19 by juitz            ###   ########.fr       */
+/*   Updated: 2024/01/25 11:47:11 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void sort_4(t_list **stack_a, t_list **stack_b)
 
     len = ft_lstsize(*stack_a);
     i = 0;
-    while (get_next_min(stack_a) && i < len - 3)
+    while (get_next_min(stack_a) && len == 4)
 	//while (i < len - 3)
     {
         pb(stack_b, stack_a);
