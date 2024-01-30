@@ -6,12 +6,13 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:51:41 by julian            #+#    #+#             */
-/*   Updated: 2024/01/26 13:29:05 by juitz            ###   ########.fr       */
+/*   Updated: 2024/01/30 14:06:13 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
 t_list	*get_next_min(t_list **stack)
 {
 	t_list	*head;
@@ -26,6 +27,26 @@ t_list	*get_next_min(t_list **stack)
 		head = head->next;
 	}
 	return (min);
+} */
+
+t_list	get_smallest(t_list *stack_a)
+{
+	t_list *tmp;
+	tmp = stack_a;
+
+	while (stack_a->next != NULL)
+	{ 
+		if(stack_a->index > stack_a->next->index)
+		{
+			tmp->next->index = stack_a->next->index;
+			tmp->index = stack_a->index;
+			stack_a->index = tmp->next->index;
+			stack_a->next->index = tmp->index;
+		}
+		else
+			stack_a = stack_a->next;
+	}
+	return (*stack_a);
 }
 
 void sort_3(t_list **stack_a)
@@ -62,7 +83,7 @@ void sort_4(t_list **stack_a, t_list **stack_b)
 
     len = ft_lstsize(*stack_a);
     i = 0;
-    while (get_next_min(stack_a) && len == 4)
+    while (get_smallest(*stack_a) && len == 4)
 	//while (i < len - 3)
     {
         pb(stack_b, stack_a);
