@@ -1,6 +1,13 @@
 NAME = push_swap
 
-SRCS =  $(wildcard src/*.c)
+SRCS =	src/main.c\
+		src/sort.c\
+		src/simple.c\
+		src/checks.c\
+		src/index.c\
+		src/listoperations.c\
+		src/stackoperations.c\
+		src/utils.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -11,12 +18,14 @@ RM = rm -rf
 
 all: ${NAME}
 ${NAME}: ${OBJS}
-	@${MAKE} -C ./libft
+	@${MAKE} -s -C ./libft
 	@${CC} ${CFLAGS} ${OBJS} ./libft/libft.a -o ${NAME}
+	@echo "Program ready!"
 
 clean: 
-	@${MAKE} -C ./libft fclean
+	@${MAKE} -s -C ./libft fclean
 	@${RM} ${OBJS}
+	@echo "Program cleaned successfully!"
 
 fclean: clean
 	@${RM} ${NAME}

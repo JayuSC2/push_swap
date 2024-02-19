@@ -6,14 +6,13 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:51:41 by julian            #+#    #+#             */
-/*   Updated: 2024/01/30 14:06:13 by juitz            ###   ########.fr       */
+/*   Updated: 2024/02/19 13:50:35 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-t_list	*get_next_min(t_list **stack)
+/* t_list	*get_next_min(t_list **stack)
 {
 	t_list	*head;
 	t_list	*min;
@@ -29,68 +28,74 @@ t_list	*get_next_min(t_list **stack)
 	return (min);
 } */
 
-t_list	get_smallest(t_list *stack_a)
+t_list *get_smallest(t_list **stack_a)
 {
-	t_list *tmp;
-	tmp = stack_a;
+	t_list *current;
+	t_list *smallest;
 
-	while (stack_a->next != NULL)
-	{ 
-		if(stack_a->index > stack_a->next->index)
-		{
-			tmp->next->index = stack_a->next->index;
-			tmp->index = stack_a->index;
-			stack_a->index = tmp->next->index;
-			stack_a->next->index = tmp->index;
-		}
-		else
-			stack_a = stack_a->next;
+	current = *stack_a;
+	smallest = *stack_a;
+
+	while (current != NULL)
+	{
+		if (current->index < smallest->index)
+			smallest = current;
+		current = current->next;
 	}
-	return (*stack_a);
+	return (smallest);
 }
 
 void sort_3(t_list **stack_a)
 {
-    int a;
-    int b;
-    int c;
+	int a;
+	int b;
+	int c;
 
-    a = (*stack_a)->index;
-    b = (*stack_a)->next->index;
-    c = (*stack_a)->next->next->index;
-    if (a > b && b > c && a > c)
-    {
-        sa(stack_a);
-        rra(stack_a);
-    }
-    else if (a > b && b < c && a < c)
-        sa(stack_a);
-    else if (a > b && b < c && a > c)
-        ra(stack_a);
-    else if (a < b && b > c && a < c)
-    {
-        sa(stack_a);
-        ra(stack_a);
-    }
-    else if (a < b && b > c && a > c)
-        rra(stack_a);
+	a = (*stack_a)->index;
+	b = (*stack_a)->next->index;
+	c = (*stack_a)->next->next->index;
+	if (a > b && b > c && a > c)
+	{
+		sa(stack_a);
+		rra(stack_a);
+	}
+	else if (a > b && b < c && a < c)
+		sa(stack_a);
+	else if (a > b && b < c && a > c)
+		ra(stack_a);
+	else if (a < b && b > c && a < c)
+	{
+		sa(stack_a);
+		ra(stack_a);
+	}
+	else if (a < b && b > c && a > c)
+		rra(stack_a);
 }
 
 void sort_4(t_list **stack_a, t_list **stack_b)
 {
-    int len;
-    int i;
+	int len;
+	//int i;
+	t_list *smallest;
 
-    len = ft_lstsize(*stack_a);
-    i = 0;
-    while (get_smallest(*stack_a) && len == 4)
-	//while (i < len - 3)
-    {
-        pb(stack_b, stack_a);
-        i++;
-    }
-    sort_3(stack_a);
-    pa(stack_b, stack_a);
+	len = ft_lstsize(*stack_a);
+	if (len < 1)
+		return;
+	//i = 1;
+	smallest = get_smallest(*stack_a);
+	while (*stack_a)
+	{
+		if (*stack_a == smallest)
+		{
+			pb(stack_b, stack_a);
+			break ;
+		}
+		*stack_a = (*stack_a)->next;
+		//i++;
+	}
+	sort_3(stack_a);
+	while (*stack_b)
+		pa(stack_b, stack_a);
 }
 
 void smol_sort(t_list **stack_a, t_list **stack_b)

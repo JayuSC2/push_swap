@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 17:22:06 by juitz             #+#    #+#             */
-/*   Updated: 2023/09/26 14:28:08 by juitz            ###   ########.fr       */
+/*   Created: 2023/09/19 19:44:07 by juitz             #+#    #+#             */
+/*   Updated: 2024/01/02 16:44:52 by julian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
-int	ft_tolower(int c)
+int	ft_printchar(int c)
 {
-	if (c >= 65 && c <= 90)
-		c = (c + 32);
-	return (c);
+	write(1, &c, 1);
+	return (1);
 }
-/*
-int main(void)
-{
-    int c = '7';
-
-    printf ("%c", ft_tolower(c));
-}
-*/
