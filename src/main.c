@@ -67,6 +67,7 @@ int main(int argc, char **argv)
 {
     t_list **stack_a;
     t_list **stack_b;
+	//t_list *smallest;
 
     if (argc < 2)
         return (-1);
@@ -76,12 +77,12 @@ int main(int argc, char **argv)
     *stack_a = NULL;
     *stack_b = NULL;
     stack_init(stack_a, argc, argv);
-	int smallest = get_smallest(stack_a);
-	ft_printf("%d", smallest);
+/* 	smallest = get_smallest(stack_a);
+	ft_printf("%d\n", smallest->value); */
     if (is_sorted(stack_a))
 		return (free_stack(stack_a), free_stack(stack_b), 0);
 	sort_stack(stack_a, stack_b);
-    /* if (argc == 2)
+ /*    if (argc == 2)
         ft_free(argv); */
     print_stack(*stack_a);
     free_stack(stack_a);

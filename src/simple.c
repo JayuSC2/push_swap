@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:51:41 by julian            #+#    #+#             */
-/*   Updated: 2024/02/19 13:50:35 by juitz            ###   ########.fr       */
+/*   Updated: 2024/02/20 16:01:11 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,26 @@ void sort_3(t_list **stack_a)
 void sort_4(t_list **stack_a, t_list **stack_b)
 {
 	int len;
-	//int i;
 	t_list *smallest;
-
+	t_list *current;
+	
 	len = ft_lstsize(*stack_a);
 	if (len < 1)
 		return;
-	//i = 1;
-	smallest = get_smallest(*stack_a);
-	while (*stack_a)
+	smallest = get_smallest(stack_a);
+	current = *stack_a;
+	while (current && current != smallest)
 	{
-		if (*stack_a == smallest)
+		ra(stack_a);
+		if (current == smallest)
 		{
 			pb(stack_b, stack_a);
-			break ;
+			break;
 		}
-		*stack_a = (*stack_a)->next;
-		//i++;
+		current = current->next;
 	}
 	sort_3(stack_a);
-	while (*stack_b)
+	if (*stack_b)
 		pa(stack_b, stack_a);
 }
 

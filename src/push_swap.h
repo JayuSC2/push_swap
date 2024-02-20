@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:44:35 by juitz             #+#    #+#             */
-/*   Updated: 2024/01/22 12:44:38 by juitz            ###   ########.fr       */
+/*   Updated: 2024/02/20 12:05:59 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void    check_duplicates(int argc, char **argv);
 void	check_minmax(t_list *stack);
 void    print_stack(t_list *stack);
 void    print_error(void);
+t_list *get_smallest(t_list **stack_a);
 
 void	index_stack(t_list **stack);
 //static t_list	*get_next_min(t_list **stack);

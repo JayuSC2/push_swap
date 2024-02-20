@@ -10,11 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
-#include <stdlib.h>
 
-static void	*ft_strncpy(char *dest, const char *src, unsigned int n)
+char	*ft_strjoin(const char *s1, const char *s2)
+{
+	char	*start;
+	char	*str;
+
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	start = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
+	return (start);
+}
+
+/* static void	*ft_strncpy(char *dest, const char *src, unsigned int n)
 {
 	unsigned int	i;
 
@@ -62,7 +79,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strncpy(new, s1, len);
 	ft_strncat(new, s2, len);
 	return (new);
-}
+} */
 /*
 int main(void)
 {
