@@ -43,21 +43,25 @@ void   check_duplicates(int argc, char **argv)
         i++;
     }
 }
-/* 
+
 void	check_overflow(int argc, char **argv)
 {
 	int i;
-
+	char *converted;
+	int num;
+	
 	i = 0;
+	num = ft_atoi(argv[i]);
+	converted = ft_itoa(num);
 	while (i < argc)
 	{
-		if (ft_atoi(argv[i]) <= INT_MAX)
+		if (ft_strncmp(num, converted, 10) != 0)
 			print_error();
-		if (ft_atoi(argv[i]) >= INT_MIN)
-			print_error();
+		/* if (ft_atoi(argv[i]) >= INT_MIN)
+			print_error(); */
 		i++;
 	}
-} */
+} 
 
 void   ft_check_args(int argc, char **argv)
 {
