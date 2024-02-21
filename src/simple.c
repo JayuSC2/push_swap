@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:51:41 by julian            #+#    #+#             */
-/*   Updated: 2024/02/20 16:01:11 by juitz            ###   ########.fr       */
+/*   Updated: 2024/02/21 12:12:52 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,60 @@ void sort_3(t_list **stack_a)
 
 void sort_4(t_list **stack_a, t_list **stack_b)
 {
-	int len;
+	int i;
+	int smallest_pos;
 	t_list *smallest;
 	t_list *current;
 	
-	len = ft_lstsize(*stack_a);
+	i = 0;
+	smallest_pos = 0;
+/* 	len = ft_lstsize(*stack_a);
 	if (len < 1)
-		return;
+		return; */
 	smallest = get_smallest(stack_a);
 	current = *stack_a;
 	while (current && current != smallest)
 	{
-		ra(stack_a);
 		if (current == smallest)
-		{
-			pb(stack_b, stack_a);
 			break;
-		}
 		current = current->next;
+		smallest_pos++;
 	}
+	while (i++ < smallest_pos)
+		ra(stack_a);
+	pb(stack_b, stack_a);
 	sort_3(stack_a);
-	if (*stack_b)
-		pa(stack_b, stack_a);
+	if (stack_b)
+		pa(stack_a, stack_b);
+}
+
+void sort_5(t_list **stack_a, t_list **stack_b)
+{
+	int i;
+	int smallest_pos;
+	t_list *smallest;
+	t_list *current;
+	
+	i = 0;
+	smallest_pos = 0;
+/* 	len = ft_lstsize(*stack_a);
+	if (len < 1)
+		return; */
+	smallest = get_smallest(stack_a);
+	current = *stack_a;
+	while (current && current != smallest)
+	{
+		if (current == smallest)
+			break;
+		current = current->next;
+		smallest_pos++;
+	}
+	while (i++ < smallest_pos)
+		ra(stack_a);
+	pb(stack_b, stack_a);
+	sort_4(stack_a, stack_b);
+	if (stack_b)
+		pa(stack_a, stack_b);
 }
 
 void smol_sort(t_list **stack_a, t_list **stack_b)
@@ -111,6 +143,6 @@ void smol_sort(t_list **stack_a, t_list **stack_b)
         sort_3(stack_a);
     else if (len == 4)
         sort_4(stack_a, stack_b);
-    /*else if (len == 5)
-        sort_5(stack_a, stack_b); */
+    else if (len == 5)
+        sort_5(stack_a, stack_b);
 }

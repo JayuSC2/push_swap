@@ -44,6 +44,11 @@ void   check_duplicates(int argc, char **argv)
     }
 }
 
+void	ft_check_minmax(int num)
+{
+	
+}
+
 void   ft_check_args(int argc, char **argv)
 {
     int i;
@@ -69,5 +74,5 @@ void   ft_check_args(int argc, char **argv)
         }
         i++;
     }
-    check_duplicates(argc, argv);
+	check_duplicates(argc, argv);
 }
