@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:44:35 by juitz             #+#    #+#             */
-/*   Updated: 2024/02/20 12:05:59 by juitz            ###   ########.fr       */
+/*   Updated: 2024/02/21 15:59:17 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_free(char **str);
 void	free_stack(t_list **stack);
 long	ft_atol(const char *str);
 void    check_duplicates(int argc, char **argv);
-void	check_minmax(t_list *stack);
+void	check_minmax(int argc, char **argv);
 void    print_stack(t_list *stack);
 void    print_error(void);
 t_list *get_smallest(t_list **stack_a);

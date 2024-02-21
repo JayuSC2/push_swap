@@ -43,11 +43,21 @@ void   check_duplicates(int argc, char **argv)
         i++;
     }
 }
-
-void	ft_check_minmax(int num)
+/* 
+void	check_overflow(int argc, char **argv)
 {
-	
-}
+	int i;
+
+	i = 0;
+	while (i < argc)
+	{
+		if (ft_atoi(argv[i]) <= INT_MAX)
+			print_error();
+		if (ft_atoi(argv[i]) >= INT_MIN)
+			print_error();
+		i++;
+	}
+} */
 
 void   ft_check_args(int argc, char **argv)
 {
@@ -75,4 +85,7 @@ void   ft_check_args(int argc, char **argv)
         i++;
     }
 	check_duplicates(argc, argv);
+	//check_minmax(argc, argv);
+	//check_overflow(argc, argv);
 }
+
