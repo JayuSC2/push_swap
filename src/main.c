@@ -63,7 +63,6 @@ void sort_stack(t_list **stack_a, t_list **stack_b)
 		radix_sort(stack_a, stack_b);
 	else
 		smol_sort(stack_a, stack_b);
-
 }
 
 int main(int argc, char **argv)
@@ -73,7 +72,9 @@ int main(int argc, char **argv)
 	//t_list *smallest;
 
     if (argc < 2)
-        return (-1);
+    	return (-1);
+	else if (argv[1][0] == '\0')
+		return (print_error(), -1);
     ft_check_args(argc, argv);
     stack_a = (t_list **)malloc(sizeof(t_list));
     stack_b = (t_list **)malloc(sizeof(t_list));
@@ -86,8 +87,5 @@ int main(int argc, char **argv)
  /*    if (argc == 2)
         ft_free(argv); */
     print_stack(*stack_a);
-    free_stack(stack_a);
-    free_stack(stack_b);
-    return (0);
+    return (free_stack(stack_a), free_stack(stack_b), 0);
 }
-

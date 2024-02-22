@@ -25,6 +25,25 @@ int	ft_isspace(int input)
 	return (0);
 }
 
+/* void	check_overflow(int argc, char **argv)
+{
+	int i;
+	char *converted;
+	int num;
+	
+	i = 0;
+	num = ft_atoi(argv[i]);
+	converted = ft_itoa(num);
+	while (i < argc)
+	{
+		if (ft_strncmp(num, converted, 10) != 0)
+			print_error();
+		if (ft_atoi(argv[i]) >= INT_MIN)
+			print_error();
+		i++;
+	}
+}  */
+
 void   check_duplicates(int argc, char **argv)
 {
     int i;
@@ -44,24 +63,16 @@ void   check_duplicates(int argc, char **argv)
     }
 }
 
-void	check_overflow(int argc, char **argv)
+/* void check_minmax (int argc, char **argv)
 {
 	int i;
-	char *converted;
-	int num;
-	
-	i = 0;
-	num = ft_atoi(argv[i]);
-	converted = ft_itoa(num);
+
+	i = 1
 	while (i < argc)
 	{
-		if (ft_strncmp(num, converted, 10) != 0)
-			print_error();
-		/* if (ft_atoi(argv[i]) >= INT_MIN)
-			print_error(); */
-		i++;
+		if (argv[i])
 	}
-} 
+} */
 
 void   ft_check_args(int argc, char **argv)
 {

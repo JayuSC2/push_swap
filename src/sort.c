@@ -41,20 +41,19 @@ void radix_sort(t_list **stack_a, t_list **stack_b)
     while (i < max_bits)
     {
         j = 0;
-        while(*stack_a)
+        while(*stack_a && j < i)
         {
             if ((((*stack_a)->index >> i) & 1) == 1)
                 ra(stack_a);
             else
-                pb(stack_a, stack_b);
-            if (*stack_a)
-                *stack_a = (*stack_a)->next;
+                pb(stack_b, stack_a);
+            *stack_a = (*stack_a)->next;
             j++;
         }
-        while (*stack_b)
-            pa(stack_a, stack_b);
         i++;
     }
+	while (*stack_b)
+        pa(stack_a, stack_b);
 }
 
 /* void radix_sort(t_stack **stack_a, t_stack **stack_b)
