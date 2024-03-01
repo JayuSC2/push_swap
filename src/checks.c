@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "push_swap.h"
 
 void   print_error(void)
@@ -63,6 +64,20 @@ void   check_duplicates(int argc, char **argv)
     }
 }
 
+void check_overflow(int argc, char **argv)
+{
+	int i;
+	long num;
+
+	i = 0;
+	while (i < argc)
+	{
+		num = ft_atol(argv[i]);
+		if (num > 2147483647 || num < -2147483648)
+			print_error();
+		i++;
+	}
+}
 /* void check_minmax (int argc, char **argv)
 {
 	int i;
@@ -101,6 +116,6 @@ void   ft_check_args(int argc, char **argv)
     }
 	check_duplicates(argc, argv);
 	//check_minmax(argc, argv);
-	//check_overflow(argc, argv);
+	check_overflow(argc, argv);
 }
 
