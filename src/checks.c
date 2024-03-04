@@ -51,6 +51,8 @@ void   check_duplicates(int argc, char **argv)
     int j;
 
     i = 1;
+	if (argc == 2)
+		i = 0;
     while (i < argc)
     {
         j = i + 1;
@@ -93,8 +95,17 @@ void   ft_check_args(int argc, char **argv)
 {
     int i;
     int j;
+	//char **args;
 
-    i = 1;
+	if (argc == 2)
+    	i = 0;
+	else
+		i = 1;
+	/* if (argc == 2)
+	{
+		i = 0;
+		args = ft_split(argv[1], ' ');
+	} */
     while (i < argc)
     {
         j = 0;
@@ -115,7 +126,6 @@ void   ft_check_args(int argc, char **argv)
         i++;
     }
 	check_duplicates(argc, argv);
-	//check_minmax(argc, argv);
 	check_overflow(argc, argv);
 }
 
