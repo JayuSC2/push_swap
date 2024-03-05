@@ -16,7 +16,6 @@
 void   print_error(void)
 {
     ft_putendl_fd("Error", 2);
-    return ;
 }
 
 int	ft_isspace(int input)
@@ -26,26 +25,7 @@ int	ft_isspace(int input)
 	return (0);
 }
 
-/* void	check_overflow(int argc, char **argv)
-{
-	int i;
-	char *converted;
-	int num;
-	
-	i = 0;
-	num = ft_atoi(argv[i]);
-	converted = ft_itoa(num);
-	while (i < argc)
-	{
-		if (ft_strncmp(num, converted, 10) != 0)
-			print_error();
-		if (ft_atoi(argv[i]) >= INT_MIN)
-			print_error();
-		i++;
-	}
-}  */
-
-void   check_duplicates(int argc, char **argv)
+int   check_duplicates(int argc, char **argv)
 {
     int i;
     int j;
@@ -59,14 +39,15 @@ void   check_duplicates(int argc, char **argv)
         while (j < argc)
         {
             if (ft_strncmp(argv[i], argv[j], ft_strlen(argv[i])) == 0)
-                print_error();
+                return (1);
             j++;
         }
         i++;
     }
+	return (0);
 }
 
-void check_overflow(int argc, char **argv)
+int	check_overflow(int argc, char **argv)
 {
 	int i;
 	long num;
@@ -76,56 +57,44 @@ void check_overflow(int argc, char **argv)
 	{
 		num = ft_atol(argv[i]);
 		if (num > 2147483647 || num < -2147483648)
-			print_error();
+			return (1);
 		i++;
 	}
+	return (0);
 }
-/* void check_minmax (int argc, char **argv)
-{
-	int i;
 
-	i = 1
-	while (i < argc)
-	{
-		if (argv[i])
-	}
-} */
-
-void   ft_check_args(int argc, char **argv)
+int   ft_check_args(int argc, char **argv)
 {
     int i;
     int j;
-	//char **args;
 
 	if (argc == 2)
     	i = 0;
 	else
 		i = 1;
-	/* if (argc == 2)
-	{
-		i = 0;
-		args = ft_split(argv[1], ' ');
-	} */
     while (i < argc)
     {
         j = 0;
         while (argv[i][j])
         {
-            if (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1]))
-                print_error();
+           	/* if (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1]))
+                return (1); */
             if (argv[i][j] == '-' && !ft_isdigit(argv[i][j + 1]))
-                print_error();
+                return (1);
             if (!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j]) && argv[i][j] != '-')
-                print_error();
+                return (1);
             if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == '-')
-                print_error();
-            if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == '+')
-                print_error();
+                return (1);
+           /*  if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == '+')
+                return (1); */
+			if (check_duplicates(argc, argv) == 1)
+				return (1);
+			if (check_overflow(argc, argv) == 1)
+				return (1);
             j++;
         }
         i++;
     }
-	check_duplicates(argc, argv);
-	check_overflow(argc, argv);
+	return (0);
 }
 

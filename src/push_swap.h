@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:44:35 by juitz             #+#    #+#             */
-/*   Updated: 2024/02/21 15:59:17 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/05 15:34:33 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ void   rr(t_list **stack);
 int rra(t_list **stack_a);
 int rrb(t_list **stack_b);
 
-void    ft_check_args(int argc, char **argv);
+int    ft_check_args(int argc, char **argv);
 int		ft_isdigit(int c);
 int		ft_isnumber(char *str);
 int		is_sorted(t_list **stack);
 void	ft_free(char **str);
 void	free_stack(t_list **stack);
 long	ft_atol(const char *str);
-void    check_duplicates(int argc, char **argv);
+int    check_duplicates(int argc, char **argv);
 void	check_minmax(int argc, char **argv);
 void    print_stack(t_list *stack);
 void    print_error(void);

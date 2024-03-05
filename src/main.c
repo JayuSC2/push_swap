@@ -102,10 +102,11 @@ int main(int argc, char **argv)
 		args = ft_split(argv[1], ' ');
 		if (!args)
 			return (-1);
-		ft_check_args(argc, args);
+		if (ft_check_args(argc, args) == 1)
+			return (ft_free(args), print_error(), -1);
 	}
-	else
-    	ft_check_args(argc, argv);
+	if (ft_check_args(argc, argv) == 1)
+			return (print_error(), -1);
 	stack_a = NULL;
     stack_a = stack_init(stack_a, argc, argv);
 	sort_stack(stack_a);
