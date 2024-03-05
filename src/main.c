@@ -34,7 +34,7 @@
 }
  */
 
-static void stack_init(t_list **stack, int argc, char **argv)
+t_list	**stack_init(t_list **stack_a, int argc, char **argv)
 {
     t_list *new;
 	//char **args;
@@ -44,33 +44,53 @@ static void stack_init(t_list **stack, int argc, char **argv)
     if (argc == 2)
     {
         i = 0;
-        argv = ft_split(argv[1], ' ');
+    	argv = ft_split(argv[1], ' ');
     }
 	/* else if (argc > 2)
 		args = argv; */
+	stack_a = (t_list **)malloc(sizeof(t_list));
+	if (stack_a == NULL)
+		return (NULL);
+    *stack_a = NULL;
     while (argv[i])
     {
         new = ft_lstnew(ft_atoi(argv[i]));
-        ft_lstadd_back(stack, new);
+        ft_lstadd_back(stack_a, new);
         i++;
     }
-    index_stack(stack);
-    if (argc == 2)
-        ft_free(argv);
+	if (argc == 2)
+    	ft_free(argv);
+    index_stack(stack_a);
+	return (stack_a);
 }
 
-void sort_stack(t_list **stack_a, t_list **stack_b)
+void sort_stack(t_list **stack_a)
 {
+	t_list	**stack_b;
+
+	if (is_sorted(stack_a) == 1)
+	{
+		free_stack(stack_a);
+		return ;
+	}
+	stack_b = (t_list **)malloc(sizeof(t_list));
+	if (stack_b == NULL)
+	{
+		free_stack(stack_a);
+		return ;
+	}
+	*stack_b = NULL;
 	if (ft_lstsize(*stack_a) > 5)
 		radix_sort(stack_a, stack_b);
 	else
 		smol_sort(stack_a, stack_b);
+	free_stack(stack_a);	
+	free_stack(stack_b);
 }
 
 int main(int argc, char **argv)
 {
     t_list **stack_a;
-    t_list **stack_b;
 	char	**args;
 
     if (argc < 2)
@@ -80,20 +100,17 @@ int main(int argc, char **argv)
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		if (args == NULL)
+		if (!args)
 			return (-1);
 		ft_check_args(argc, args);
 	}
 	else
     	ft_check_args(argc, argv);
-    stack_a = (t_list **)malloc(sizeof(t_list));
-    stack_b = (t_list **)malloc(sizeof(t_list));
-    *stack_a = NULL;
-    *stack_b = NULL;
-    stack_init(stack_a, argc, argv);
-    if (is_sorted(stack_a))
-		return (free_stack(stack_a), free_stack(stack_b), 0);
-	sort_stack(stack_a, stack_b);
-    print_stack(*stack_a);
-    return (free_stack(stack_a), free_stack(stack_b), 0);
+	stack_a = NULL;
+    stack_a = stack_init(stack_a, argc, argv);
+	sort_stack(stack_a);
+	if (argc == 2)
+		ft_free(args);
+    //print_stack(*stack_a);
+    return (0);
 }
