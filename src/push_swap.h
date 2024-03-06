@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:44:35 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/05 15:34:33 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/06 13:29:22 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 #include "../libft/libft.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+
+#include <stdio.h>
 
 typedef struct		s_list
 {
@@ -74,5 +77,8 @@ t_list *ft_lstnew(int value);
 t_list	*ft_lstlast(t_list *head);
 void	ft_lstadd_back(t_list **stack, t_list *tmp);
 int     ft_lstsize(t_list *lst);
+void    ft_lstdelone(t_list **lst, t_list *node);
+void    ft_lstclear(t_list **lst);
+
 
 #endif

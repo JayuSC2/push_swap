@@ -12,6 +12,7 @@
 
 #include <limits.h>
 #include "push_swap.h"
+#include <stdio.h>
 
 void   print_error(void)
 {
@@ -33,7 +34,7 @@ int   check_duplicates(int argc, char **argv)
     i = 1;
 	if (argc == 2)
 		i = 0;
-    while (i < argc)
+    while (argv[i] != NULL)
     {
         j = i + 1;
         while (j < argc)
@@ -50,10 +51,13 @@ int   check_duplicates(int argc, char **argv)
 int	check_overflow(int argc, char **argv)
 {
 	int i;
-	long num;
+	long int num;
 
-	i = 0;
-	while (i < argc)
+	if (argc == 2)
+		i = 0;
+	i = 1;
+
+	while (argv[i])
 	{
 		num = ft_atol(argv[i]);
 		if (num > 2147483647 || num < -2147483648)
@@ -61,6 +65,12 @@ int	check_overflow(int argc, char **argv)
 		i++;
 	}
 	return (0);
+
+	/* 	while ((argv[i] >= '0' && argv[i] <= '9'))
+	{
+		num = num * 10 + argv[i++] - '0';
+		printf("num = %li", num);
+	} */
 }
 
 int   ft_check_args(int argc, char **argv)
@@ -72,8 +82,10 @@ int   ft_check_args(int argc, char **argv)
     	i = 0;
 	else
 		i = 1;
-    while (i < argc)
+    while (argv[i])
     {
+		//ft_putendl_fd(argv[i], 1);
+		//ft_putendl_fd("test1", 1);
         j = 0;
         while (argv[i][j])
         {
@@ -87,13 +99,13 @@ int   ft_check_args(int argc, char **argv)
                 return (1);
            /*  if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == '+')
                 return (1); */
-			if (check_duplicates(argc, argv) == 1)
-				return (1);
-			if (check_overflow(argc, argv) == 1)
-				return (1);
             j++;
         }
         i++;
+		if (check_duplicates(argc, argv) == 1)
+			return (1);
+		if (check_overflow(argc, argv) == 1)
+			return (1);
     }
 	return (0);
 }

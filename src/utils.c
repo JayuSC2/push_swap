@@ -52,6 +52,8 @@ void	free_stack(t_list **stack)
 	t_list	*tmp;
 
 	top = *stack;
+	if (stack == NULL)
+		return ;
 	while (top)
 	{
 		tmp = top;
@@ -62,15 +64,16 @@ void	free_stack(t_list **stack)
 }
 
 
-long	ft_atol(const char *str)
+long int	ft_atol(const char *str)
 {
-	int	i;
-	long    num;
-	int	sign;
+	int			i;
+	long int	num;
+	int			sign;
 
 	i = 0;
 	num = 0;
 	sign = 1;
+	//printf("%s\n", str);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
@@ -81,6 +84,7 @@ long	ft_atol(const char *str)
 	}
 	while ((str[i] >= '0' && str[i] <= '9'))
 	{
+		//printf("num: %li\n", num);
 		num *= 10;
 		num += str[i] - '0';
 		i++;

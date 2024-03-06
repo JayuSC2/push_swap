@@ -17,6 +17,7 @@ t_list *ft_lstnew(int value)
 	t_list	*new;
 
 	new = malloc(sizeof(t_list));
+	//new = NULL;
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -62,5 +63,34 @@ void ft_lstadd_back(t_list **stack, t_list *new)
     {
         *stack = new;
         (*stack)->next = NULL;
+    }
+}
+void    ft_lstclear(t_list **lst)
+{
+    t_list    *current_node;
+
+    if (lst == NULL)
+        return ;
+    while (*lst != NULL)
+    {
+        current_node = *lst;
+        if (current_node != NULL)
+            ft_lstdelone(lst, current_node);
+    }
+    *lst = NULL;
+}
+
+void    ft_lstdelone(t_list **lst, t_list *node)
+{
+    t_list    *to_delete;
+
+    if (*lst == NULL)
+        return ;
+    if (node != NULL)
+    {
+        to_delete = node;
+        node = node->next;
+        free(to_delete);
+        *lst = node;
     }
 }

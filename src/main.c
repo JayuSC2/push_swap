@@ -37,7 +37,6 @@
 t_list	**stack_init(t_list **stack_a, int argc, char **argv)
 {
     t_list *new;
-	//char **args;
     int i;
 
     i = 1;
@@ -46,8 +45,6 @@ t_list	**stack_init(t_list **stack_a, int argc, char **argv)
         i = 0;
     	argv = ft_split(argv[1], ' ');
     }
-	/* else if (argc > 2)
-		args = argv; */
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	if (stack_a == NULL)
 		return (NULL);
@@ -55,6 +52,8 @@ t_list	**stack_init(t_list **stack_a, int argc, char **argv)
     while (argv[i])
     {
         new = ft_lstnew(ft_atoi(argv[i]));
+		if (new == NULL)
+			return (ft_lstclear(stack_a), NULL);
         ft_lstadd_back(stack_a, new);
         i++;
     }
@@ -84,6 +83,7 @@ void sort_stack(t_list **stack_a)
 		radix_sort(stack_a, stack_b);
 	else
 		smol_sort(stack_a, stack_b);
+	print_stack(*stack_a);
 	free_stack(stack_a);	
 	free_stack(stack_b);
 }
@@ -104,14 +104,20 @@ int main(int argc, char **argv)
 			return (-1);
 		if (ft_check_args(argc, args) == 1)
 			return (ft_free(args), print_error(), -1);
+		//ft_free(args);
 	}
-	if (ft_check_args(argc, argv) == 1)
+	else
+	{
+		if (ft_check_args(argc, argv) == 1)
 			return (print_error(), -1);
+	}
 	stack_a = NULL;
+/* 	if (argc == 2)
+		stack_a = stack_init(stack_a, argc, args);
+	else */
     stack_a = stack_init(stack_a, argc, argv);
+	if (stack_a == NULL)
+		return (-1);
 	sort_stack(stack_a);
-	if (argc == 2)
-		ft_free(args);
-    //print_stack(*stack_a);
     return (0);
 }
