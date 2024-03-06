@@ -6,13 +6,13 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:01:22 by juitz             #+#    #+#             */
-/*   Updated: 2023/09/26 12:57:34 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/06 16:12:12 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int input)
+int	isdigit(int input)
 {
 	if (input >= 48 && input <= 57)
 		return (1);

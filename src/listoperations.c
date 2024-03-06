@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_list *ft_lstnew(int value)
+t_list	*ft_lstnew(int value)
 {
 	t_list	*new;
 
@@ -25,10 +25,11 @@ t_list *ft_lstnew(int value)
 	new->next = NULL;
 	return (new);
 }
-int ft_lstsize(t_list *stack)
-{	
-	int i;
-	
+
+int	ft_lstsize(t_list *stack)
+{
+	int	i;
+
 	i = 0;
 	while (stack != NULL)
 	{
@@ -38,59 +39,30 @@ int ft_lstsize(t_list *stack)
 	return (i);
 }
 
-t_list *ft_lstlast(t_list *stack)
+t_list	*ft_lstlast(t_list *stack)
 {
 	while (stack->next != NULL)
-	{	
+	{
 		stack = stack->next;
 		if (stack->next == NULL)
 			return (stack);
-	}			
-	return(stack);
+	}
+	return (stack);
 }
 
-void ft_lstadd_back(t_list **stack, t_list *new)
+void	ft_lstadd_back(t_list **stack, t_list *new)
 {
-	t_list *last_element;
-	
-    if (*stack)
-    {
-        last_element = ft_lstlast(*stack);
-        last_element->next = new;
-        new->next = NULL;
-    }
-    else
-    {
-        *stack = new;
-        (*stack)->next = NULL;
-    }
-}
-void    ft_lstclear(t_list **lst)
-{
-    t_list    *current_node;
+	t_list	*last_element;
 
-    if (lst == NULL)
-        return ;
-    while (*lst != NULL)
-    {
-        current_node = *lst;
-        if (current_node != NULL)
-            ft_lstdelone(lst, current_node);
-    }
-    *lst = NULL;
-}
-
-void    ft_lstdelone(t_list **lst, t_list *node)
-{
-    t_list    *to_delete;
-
-    if (*lst == NULL)
-        return ;
-    if (node != NULL)
-    {
-        to_delete = node;
-        node = node->next;
-        free(to_delete);
-        *lst = node;
-    }
+	if (*stack)
+	{
+		last_element = ft_lstlast(*stack);
+		last_element->next = new;
+		new->next = NULL;
+	}
+	else
+	{
+		*stack = new;
+		(*stack)->next = NULL;
+	}
 }

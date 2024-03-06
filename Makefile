@@ -10,6 +10,7 @@ SRCS =	src/main.c\
 		src/checks.c\
 		src/index.c\
 		src/listoperations.c\
+		src/listdelete.c\
 		src/stackoperations.c\
 		src/utils.c
 

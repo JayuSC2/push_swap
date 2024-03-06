@@ -40,4 +40,4 @@ void	index_stack(t_list **stack)
 		head->index = index++;
 		head = get_next_min(stack);
 	}
-} 
+}

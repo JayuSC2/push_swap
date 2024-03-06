@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:57:28 by juitz             #+#    #+#             */
-/*   Updated: 2024/02/20 11:55:06 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/06 16:12:12 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_isnumber(char *str);
 int		ft_isalnum(int input);
 int		ft_isascii(int input);
 int		ft_isalpha(int input);
-int		ft_isdigit(int input);
+int		isdigit(int input);
 int		ft_isprint(int input);
 int		ft_tolower(int c);
 int		ft_toupper(int c);

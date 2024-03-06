@@ -103,7 +103,7 @@ int ft_isnumber(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!isdigit(str[i]))
 			return (0);
 		i++;
 	}

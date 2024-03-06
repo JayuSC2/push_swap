@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:44:35 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/06 13:29:22 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/06 16:43:52 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@
 #include "../libft/libft.h"
 #include <stdlib.h>
 #include <unistd.h>
-
-
-#include <stdio.h>
 
 typedef struct		s_list
 {
@@ -54,13 +51,13 @@ int rra(t_list **stack_a);
 int rrb(t_list **stack_b);
 
 int    ft_check_args(int argc, char **argv);
-int		ft_isdigit(int c);
+int		isdigit(int c);
 int		ft_isnumber(char *str);
 int		is_sorted(t_list **stack);
 void	ft_free(char **str);
 void	free_stack(t_list **stack);
 long	ft_atol(const char *str);
-int    check_duplicates(int argc, char **argv);
+int    ft_isdup(int argc, char **argv);
 void	check_minmax(int argc, char **argv);
 void    print_stack(t_list *stack);
 void    print_error(void);
