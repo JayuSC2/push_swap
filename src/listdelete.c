@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:42:55 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/06 16:44:46 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/06 17:43:18 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	ft_lstdelone(t_list **lst, t_list *node)
 {
 	t_list	*to_delete;
 
-    if (*lst == NULL)
-        return ;
-    if (node != NULL)
-    {
-        to_delete = node;
-        node = node->next;
-        free(to_delete);
-        *lst = node;
-    }
+	if (*lst == NULL)
+		return ;
+	if (node != NULL)
+	{
+		to_delete = node;
+		node = node->next;
+		free(to_delete);
+		*lst = node;
+	}
 }
