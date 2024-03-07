@@ -12,7 +12,8 @@ SRCS =	src/main.c\
 		src/listoperations.c\
 		src/listdelete.c\
 		src/stackoperations.c\
-		src/utils.c
+		src/utils.c\
+		src/frees.c
 
 OBJS = $(SRCS:.c=.o)
 

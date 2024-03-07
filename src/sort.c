@@ -12,25 +12,25 @@
 
 #include "push_swap.h"
 
-static int		get_max_bits(t_list *stack)
+static int	get_max_bits(t_list *stack)
 {
-    int max;
-    int max_bits;
-    
-    max = stack->index;
-    max_bits = 0;
-    while (stack)
-    {
-        if (stack->index > max)
-            max = stack->index;
-        stack = stack->next;
-    }
-    while ((max >> max_bits) != 0)
-        max_bits++;
-    return (max_bits);
+	int	max;
+	int	max_bits;
+
+	max = stack->index;
+	max_bits = 0;
+	while (stack)
+	{
+		if (stack->index > max)
+			max = stack->index;
+		stack = stack->next;
+	}
+	while ((max >> max_bits) != 0)
+		max_bits++;
+	return (max_bits);
 }
 
-void radix_sort(t_list **stack_a, t_list **stack_b)
+void	radix_sort(t_list **stack_a, t_list **stack_b)
 {
 	int i;
 	int j;

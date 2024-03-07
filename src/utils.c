@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void    print_stack(t_list *stack)
+void	print_stack(t_list *stack)
 {
-    while (stack)
-    {
-        ft_putnbr_fd (stack->value, 1);
+	while (stack)
+	{
+		ft_putnbr_fd (stack->value, 1);
 		ft_putchar_fd(' ', 1);
-        stack = stack->next;
-    }
+		stack = stack->next;
+	}
 }
 
 int	is_sorted(t_list **stack)
@@ -36,34 +36,6 @@ int	is_sorted(t_list **stack)
 	return (1);
 }
 
-void ft_free(char **str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
-}
-
-void	free_stack(t_list **stack)
-{
-	t_list	*top;
-	t_list	*tmp;
-
-	top = *stack;
-	if (stack == NULL)
-		return ;
-	while (top)
-	{
-		tmp = top;
-		top = top->next;
-		free(tmp);
-	}
-	free(stack);
-}
-
-
 long int	ft_atol(const char *str)
 {
 	int			i;
@@ -73,7 +45,6 @@ long int	ft_atol(const char *str)
 	i = 0;
 	num = 0;
 	sign = 1;
-	//printf("%s\n", str);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
@@ -84,7 +55,6 @@ long int	ft_atol(const char *str)
 	}
 	while ((str[i] >= '0' && str[i] <= '9'))
 	{
-		//printf("num: %li\n", num);
 		num *= 10;
 		num += str[i] - '0';
 		i++;
@@ -92,9 +62,9 @@ long int	ft_atol(const char *str)
 	return (num * sign);
 }
 
-int ft_isnumber(char *str)
+int	ft_isnumber(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
@@ -109,4 +79,3 @@ int ft_isnumber(char *str)
 	}
 	return (1);
 }
-

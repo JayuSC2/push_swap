@@ -12,51 +12,31 @@
 
 #include "push_swap.h"
 
-void ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
-    int tmp;
+	int	tmp;
 
-    tmp = *a;
-    *a = *b;
-    *b = tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-int swap(t_list **stack)
+int	swap(t_list **stack)
 {
-    if (ft_lstsize(*stack) < 2)
-        return (-1);
+	t_list	*head; 
+	t_list	*next;
 
-    t_list *head; 
-    t_list *next;
-
+	if (ft_lstsize(*stack) < 2)
+		return (-1);
 	head = *stack;
 	next = head->next;
 
-    if (!head || !next)
-        print_error();
-
+	if (!head || !next)
+		print_error();
     ft_swap(&head->value, &next->value);
     ft_swap(&head->index, &next->index);
-
-    return (0);
+	return (0);
 }
-
-/* int swap(t_list **stack)
-{
-    t_list *tmp;
-	t_list *head;
-
-    if (ft_lstsize(*stack) < 2)
-        return (-1);
-	head = *stack;
-    if (*stack && (*stack)->next)
-    {
-        tmp = (*stack)->next;
-        (*stack)->next = *stack;
-        *stack = tmp;
-    }
-    return (0);
-} */
 
 int sa(t_list **stack_a)
 {
@@ -116,23 +96,6 @@ int	rotate(t_list **stack)
 	tail->next = head;
 	return (0);
 }
-/* int   rotate(t_list **stack)
-{
-    t_list *tmp;
-    t_list *tmp2;
-
-    if (*stack && (*stack)->next)
-    {
-        tmp = *stack;
-        tmp2 = *stack;
-        *stack = (*stack)->next;
-        while (tmp2->next)
-            tmp2 = tmp2->next;
-        tmp2->next = tmp;
-        tmp->next = NULL;
-    }
-    return (0);
-} */
 
 int ra(t_list **stack_a)
 {
@@ -204,3 +167,38 @@ int   reverse_rotate_both(t_list **stack1, t_list **stack2)
     ft_putendl_fd("rrr", 1);
     return (0);
 }
+
+/* int swap(t_list **stack)
+{
+    t_list *tmp;
+	t_list *head;
+
+    if (ft_lstsize(*stack) < 2)
+        return (-1);
+	head = *stack;
+    if (*stack && (*stack)->next)
+    {
+        tmp = (*stack)->next;
+        (*stack)->next = *stack;
+        *stack = tmp;
+    }
+    return (0);
+} */
+
+/* int   rotate(t_list **stack)
+{
+    t_list *tmp;
+    t_list *tmp2;
+
+    if (*stack && (*stack)->next)
+    {
+        tmp = *stack;
+        tmp2 = *stack;
+        *stack = (*stack)->next;
+        while (tmp2->next)
+            tmp2 = tmp2->next;
+        tmp2->next = tmp;
+        tmp->next = NULL;
+    }
+    return (0);
+} */

@@ -19,7 +19,7 @@ void	print_error(void)
 	ft_putendl_fd("Error", 2);
 }
 
-int	isspace(int input)
+int	ft_isspace(int input)
 {
 	if (input == ' ' || input == '\t' || input == '\n')
 		return (1);
@@ -82,12 +82,16 @@ int	ft_check_args(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
+			if (argv[i][0] == '\0')
+				return (1);
 			if (argv[i][j] == '-' && !isdigit(argv[i][j + 1]))
 				return (1);
-			if (!isdigit(argv[i][j]) && !isspace(argv[i][j]) && argv[i][j] != '-')
+			if (!isdigit(argv[i][j]) && !ft_isspace(argv[i][j]) && argv[i][j] != '-')
 				return (1);
 			if (isdigit(argv[i][j]) && argv[i][j + 1] == '-')
 				return (1);
+			/* if (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1]))
+                return (1); */
 			j++;
 		}
 		i++;
@@ -98,6 +102,4 @@ int	ft_check_args(int argc, char **argv)
 }
 
 /*  if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == '+')
-                return (1); */
-/* if (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1]))
                 return (1); */
