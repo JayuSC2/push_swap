@@ -12,6 +12,18 @@
 
 #include "push_swap.h"
 
+void	print_bits(unsigned char octet)
+{
+    int i = 8;
+    unsigned char bit;
+
+    while (i--)
+    {
+        bit = (octet >> i & 1) + '0';
+        write (1, &bit, 1);
+    }
+}
+
 static int	get_max_bits(t_list *stack)
 {
 	int	max;
@@ -48,6 +60,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 			else
 				pb(stack_b, stack_a);
 			j++;
+			*stack_a = (*stack_a)->next;
 		}
 		while (*stack_b)
 			pa(stack_a, stack_b);
