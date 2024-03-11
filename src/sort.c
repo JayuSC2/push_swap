@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	print_bits(unsigned char octet)
+/* void	print_bits(unsigned char octet)
 {
     int i = 8;
     unsigned char bit;
@@ -22,7 +22,50 @@ void	print_bits(unsigned char octet)
         bit = (octet >> i & 1) + '0';
         write (1, &bit, 1);
     }
+} */
+
+/* static int  get_max_bits(t_list *stack)
+{
+    int max;
+    int max_bits;
+
+    max = stack->index;
+    max_bits = 1;
+    while (stack)
+    {
+        if (stack->index > max)
+            max = stack->index;
+        stack = stack->next;
+    }
+    while ((max >>= 1) != 0)
+        max_bits++;
+    return (max_bits);
 }
+
+void    radix_sort(t_list **stack_a, t_list **stack_b)
+{
+    int i;
+    int j;
+    int max_bits;
+
+    i = 0;
+    max_bits = get_max_bits(*stack_a);
+    while (i < max_bits)
+    {
+        j = 0;
+        while (j < ft_lstsize(*stack_a))
+        {
+            if (((*stack_a)->index >> i) & 1)
+                ra(stack_a);
+            else
+                pb(stack_b, stack_a);
+            j++;
+        }
+        while (*stack_b)
+            pa(stack_a, stack_b);
+        i++;
+    }
+} */
 
 static int	get_max_bits(t_list *stack)
 {
@@ -53,14 +96,13 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 	while (i < max_bits)
 	{
 		j = 0;
-		while (j < ft_lstsize(*stack_a))
+		while (j <= ft_lstsize(*stack_a) + 1)
 		{
 			if ((((*stack_a)->index >> i) & 1) == 1)
 				ra(stack_a);
 			else
 				pb(stack_b, stack_a);
 			j++;
-			*stack_a = (*stack_a)->next;
 		}
 		while (*stack_b)
 			pa(stack_a, stack_b);

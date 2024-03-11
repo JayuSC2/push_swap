@@ -32,6 +32,32 @@ int	ft_isdup(int argc, char **argv)
 {
 	int	i;
 	int	j;
+	int num1;
+	int num2;
+
+	i = 1;
+	if (argc == 2)
+		i = 0;
+	while (argv[i])
+	{
+		j = i + 1;
+		while (j < argc)
+		{
+			num1 = atoi(argv[i]);
+			num2 = atoi(argv[j]);
+			if (num1 == num2)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+/* int	ft_isdup(int argc, char **argv)
+{
+	int	i;
+	int	j;
 
 	i = 1;
 	if (argc == 2)
@@ -48,7 +74,7 @@ int	ft_isdup(int argc, char **argv)
 		i++;
 	}
 	return (0);
-}
+} */
 
 int	check_overflow(int argc, char **argv)
 {
