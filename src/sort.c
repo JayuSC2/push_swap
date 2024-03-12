@@ -96,7 +96,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 	while (i < max_bits)
 	{
 		j = 0;
-		while (j <= ft_lstsize(*stack_a) + 1)
+		while (j < ft_lstsize(*stack_a))
 		{
 			if ((((*stack_a)->index >> i) & 1) == 1)
 				ra(stack_a);

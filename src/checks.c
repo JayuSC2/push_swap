@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+//#include <limits.h>
 #include "push_swap.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 void	print_error(void)
 {
@@ -28,7 +28,7 @@ int	ft_isspace(int input)
 	return (0);
 }
 
-int	ft_isdup(int argc, char **argv)
+/* int	ft_isdup(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -43,8 +43,8 @@ int	ft_isdup(int argc, char **argv)
 		j = i + 1;
 		while (j < argc)
 		{
-			num1 = atoi(argv[i]);
-			num2 = atoi(argv[j]);
+			num1 = ft_atoi(argv[i]);
+			num2 = ft_atoi(argv[j]);
 			if (num1 == num2)
 				return (1);
 			j++;
@@ -52,9 +52,9 @@ int	ft_isdup(int argc, char **argv)
 		i++;
 	}
 	return (0);
-}
+} */
 
-/* int	ft_isdup(int argc, char **argv)
+int	ft_isdup(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -74,7 +74,7 @@ int	ft_isdup(int argc, char **argv)
 		i++;
 	}
 	return (0);
-} */
+}
 
 int	check_overflow(int argc, char **argv)
 {
