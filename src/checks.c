@@ -19,7 +19,7 @@ void	print_error(void)
 	ft_putendl_fd("Error", 2);
 }
 
-int	is_number(char *str)
+int	isnumber(char *str)
 {
 	int	i;
 
@@ -68,8 +68,8 @@ int	ft_isspace(int input)
 		i++;
 	}
 	return (0);
-} */
-
+}
+ */
 int	ft_isdup(int argc, char **argv)
 {
 	int	i;
@@ -110,7 +110,40 @@ int	check_overflow(int argc, char **argv)
 	return (0);
 }
 
-int	ft_check_args(int argc, char **argv)
+int ft_check_args(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	if (argc == 2)
+		i = 0;
+	else
+		i = 1;
+	if (argv[i][0] == '\0')
+			return (1);
+	if (ft_isdup(argc, argv) == 1 || check_overflow(argc, argv) == 1)
+			return (1);
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] == '-' && !isnumber(&argv[i][j + 1]))
+				return (1);
+			if (!isnumber(&argv[i][j]) && !ft_isspace(argv[i][j]) && argv[i][j] != '-')
+				return (1);
+			if (isnumber(&argv[i][j]) && argv[i][j + 1] == '-')
+				return (1);
+			if (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+/* int	ft_check_args(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -126,14 +159,14 @@ int	ft_check_args(int argc, char **argv)
 		{
 			if (argv[i][0] == '\0')
 				return (1);
-			if (argv[i][j] == '-' && !isdigit(argv[i][j + 1]))
+			if (argv[i][j] == '-' && !isnumber(argv[i][j + 1]))
 				return (1);
-			if (!isdigit(argv[i][j]) && !ft_isspace(argv[i][j]) && argv[i][j] != '-')
+			if (!isnumber(argv[i][j]) && !ft_isspace(argv[i][j]) && argv[i][j] != '-')
 				return (1);
-			if (isdigit(argv[i][j]) && argv[i][j + 1] == '-')
+			if (isnumber(argv[i][j]) && argv[i][j + 1] == '-')
 				return (1);
-			/* if (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1]))
-                return (1); */
+			if (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1]))
+                return (1);
 			j++;
 		}
 		i++;
@@ -141,7 +174,7 @@ int	ft_check_args(int argc, char **argv)
 			return (1);
 	}
 	return (0);
-}
+} */
 
 /*  if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == '+')
                 return (1); */

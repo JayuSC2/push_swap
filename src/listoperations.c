@@ -17,7 +17,6 @@ t_list	*ft_lstnew(int value)
 	t_list	*new;
 
 	new = malloc(sizeof(t_list));
-	//new = NULL;
 	if (!new)
 		return (NULL);
 	new->value = value;
