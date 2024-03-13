@@ -21,7 +21,18 @@ void	print_error(void)
 
 int	is_number(char *str)
 {
-	
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	ft_isspace(int input)
