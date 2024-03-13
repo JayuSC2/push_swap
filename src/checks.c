@@ -19,6 +19,11 @@ void	print_error(void)
 	ft_putendl_fd("Error", 2);
 }
 
+int	is_number(char *str)
+{
+	
+}
+
 int	ft_isspace(int input)
 {
 	if (input == ' ' || input == '\t' || input == '\n')

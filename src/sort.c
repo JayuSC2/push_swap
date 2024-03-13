@@ -87,16 +87,18 @@ static int	get_max_bits(t_list *stack)
 
 void	radix_sort(t_list **stack_a, t_list **stack_b)
 {
-	int i;
-	int j;
-	int max_bits;
+	int	i;
+	int	j;
+	int	max_bits;
+	int	stack_size;
 
 	i = 0;
+	stack_size = ft_lstsize(*stack_a);
 	max_bits = get_max_bits(*stack_a);
 	while (i < max_bits)
 	{
 		j = 0;
-		while (j < ft_lstsize(*stack_a))
+		while (j < stack_size)
 		{
 			if ((((*stack_a)->index >> i) & 1) == 1)
 				ra(stack_a);
@@ -136,4 +138,3 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
     }
 }
  */
-
