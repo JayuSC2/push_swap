@@ -6,7 +6,7 @@
 /*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:00:00 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/13 17:05:22 by juitz            ###   ########.fr       */
+/*   Updated: 2024/03/14 14:04:21 by juitz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_free(char **str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return ;
 	while (str[i])
 		free(str[i++]);
 	free(str);

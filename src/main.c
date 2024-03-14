@@ -18,13 +18,6 @@ t_list	**stack_init(t_list **stack_a, int argc, char **argv)
 	int		i;
 
 	i = 1;
-	if (argc == 2)
-	{
-		i = 0;
-		argv = ft_split(argv[1], ' ');
-		if(!argv)
-			return (NULL);
-	}
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	if (stack_a == NULL)
 		return (NULL);
@@ -33,14 +26,13 @@ t_list	**stack_init(t_list **stack_a, int argc, char **argv)
 	{
 		new = ft_lstnew(ft_atoi(argv[i]));
 		if (new == NULL)
-			return (ft_lstclear(stack_a), NULL);
+			return (free_stack(stack_a), NULL);
 		ft_lstadd_back(stack_a, new);
 		i++;
 	}
 	if (argc == 2)
 		ft_free(argv);
-	index_stack(stack_a);
-	return (stack_a);
+	return (index_stack(stack_a), stack_a);
 }
 
 void	sort_stack(t_list **stack_a)
@@ -63,7 +55,7 @@ void	sort_stack(t_list **stack_a)
 		radix_sort(stack_a, stack_b);
 	else
 		smol_sort(stack_a, stack_b);
-	//print_stack(*stack_a);
+	print_stack(*stack_a);
 	free_stack(stack_a);
 	free_stack(stack_b);
 }
@@ -81,7 +73,7 @@ int	main(int argc, char **argv)
 		if (!args)
 			return (-1);
 		if (ft_check_args(argc, args) == 1)
-			return (/* ft_free(args), */ print_error(), -1);
+			return (ft_free(args), print_error(), -1);
 	}
 	else
 	{
@@ -89,11 +81,17 @@ int	main(int argc, char **argv)
 			return (print_error(), -1);
 	}
 	stack_a = NULL;
-	stack_a = stack_init(stack_a, argc, argv);
+	if (argc == 2)
+		stack_a = stack_init(stack_a, argc, args);
+	else
+		stack_a = stack_init(stack_a, argc, argv);
 	if (stack_a == NULL)
+	{
+		if (argc == 2)
+			ft_free(args);
 		return (-1);
+	}
 	sort_stack(stack_a);
-	ft_free(args);
 	return (0);
 }
 
@@ -102,7 +100,16 @@ int	main(int argc, char **argv)
     t_list *tmp;
     int i;
     int num;
+	
+		if (argc == 2)
+	{
+		i = 0;
+		argv = ft_split(argv[1], ' ');
+		if(!argv)
+			return (NULL);
+	}
     
+
     i = 1;
     if (argc == 2)
         argv = ft_split(argv[1], ' ');
@@ -117,4 +124,12 @@ int	main(int argc, char **argv)
     //check_minmax(*stack);
     index_stack(stack);
 }
- */
+
+
+	if (argc == 2)
+	{
+		i = 0;
+		argv = ft_split(argv[1], ' ');
+		if(!argv)
+			return (NULL);
+	} */
