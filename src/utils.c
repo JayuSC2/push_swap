@@ -12,6 +12,11 @@
 
 #include "push_swap.h"
 
+void	print_error(void)
+{
+	ft_putendl_fd("Error", 2);
+}
+
 void	print_stack(t_list *stack)
 {
 	while (stack)

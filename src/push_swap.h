@@ -3,18 +3,6 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juitz <juitz@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 12:44:35 by juitz             #+#    #+#             */
-/*   Updated: 2024/03/07 11:40:08 by juitz            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
 /*   By: julian <julian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 16:57:01 by julian            #+#    #+#             */
@@ -50,7 +38,8 @@ void	rr(t_list **stack);
 int		rra(t_list **stack_a);
 int		rrb(t_list **stack_b);
 
-int		ft_check_args(int argc, char **argv);
+int		ft_check_args(int argc, char **argv, int i);
+int		ft_isdupnode(t_list *stack);
 int		isdigit(int c);
 int		ft_isnumber(char *str);
 int		is_sorted(t_list **stack);
