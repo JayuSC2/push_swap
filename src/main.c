@@ -12,29 +12,6 @@
 
 #include "push_swap.h"
 
-/* t_list	**stack_init(t_list **stack_a, int argc, char **argv)
-{
-	t_list	*new;
-	int		i;
-
-	i = 1;
-	stack_a = (t_list **)malloc(sizeof(t_list));
-	if (stack_a == NULL)
-		return (NULL);
-	*stack_a = NULL;
-	while (argv[i])
-	{
-		new = ft_lstnew(ft_atoi(argv[i]));
-		if (new == NULL)
-			return (free_stack(stack_a), NULL);
-		ft_lstadd_back(stack_a, new);
-		i++;
-	}
-	if (argc == 2)
-		ft_free(argv);
-	return (index_stack(stack_a), stack_a);
-} */
-
 t_list	**stack_init(t_list **stack_a, int argc, char **argv)
 {
 	t_list	*new;
@@ -115,7 +92,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (-1);
-	if (argv[1][0] == '\0')
+	if (argv[1][0] == '\0' || argv[1][0] == ' ')
 		return (print_error(), -1);
 	stack_a = NULL;
 	if (argc == 2)

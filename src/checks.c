@@ -21,14 +21,14 @@ int	isnumber(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	isspace(int input)
+int	ft_isspace(int input)
 {
 	if (input == ' ' || input == '\t' || input == '\n')
 		return (1);
@@ -37,68 +37,34 @@ int	isspace(int input)
 	return (0);
 }
 
-int ft_isdupnode(t_list *stack)
+int	ft_isdupnode(t_list *stack)
 {
-	t_list *top;
-	int stack_size;
-	int i;
-	int j;
+	t_list	*current;
+	t_list	*compare;
 
-	top = stack;
-	stack = stack->next;
-	stack_size = ft_lstsize(stack);
-	i = 0;
-
-	while (i < stack_size)
+	current = stack;
+	while (current != NULL)
 	{
-		j = i + 1;
-		while (j < stack_size)
+		compare = current->next;
+		while (compare != NULL)
 		{
-			if (top->value == stack->value)
+			if (current->value == compare->value)
 				return (1);
-			stack = stack->next;
-			j++;
+			compare = compare->next;
 		}
-		top = top->next;
-		i++;
+		current = current->next;
 	}
 	return (0);
 }
 
-/* int	ft_isdup(int argc, char **argv)
-{
-	int	i;
-	int	j;
-	int	num1;
-	int	num2;
-
-	i = 1;
-	if (argc == 2)
-		i = 0;
-	while (argv[i])
-	{
-		j = i + 1;
-		while (j < argc)
-		{
-			num1 = ft_atoi(argv[i]);
-			num2 = ft_atoi(argv[j]);
-			if (num1 == num2)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-} */
-
 int	check_overflow(int argc, char **argv)
 {
-	int			i;
 	long int	num;
+	int			i;
 
+	i = 1;
 	if (argc == 2)
 		i = 0;
-	i = 1;
 	while (argv[i])
 	{
 		num = ft_atol(argv[i]);
@@ -112,31 +78,23 @@ int	check_overflow(int argc, char **argv)
 int	ft_check_args(int argc, char **argv, int i)
 {
 	int	j;
-	/* t_list **stack;
 
-	*stack = argv; */
-	if (argv[i][0] == '\0' /* || ft_isdupnode(*stack) == 1 */
-	|| check_overflow(argc, argv) == 1)
+	if (argv[i][0] == '\0' || check_overflow(argc, argv) == 1)
 		return (1);
 	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((argv[i][j] == '-' && !isdigit(argv[i][j + 1]))
-			|| ((!isdigit(argv[i][j]) && !isspace(argv[i][j])
+			if ((argv[i][j] == '-' && !ft_isdigit(argv[i][j + 1]))
+			|| ((!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j])
 			&& argv[i][j] != '-'))
-			|| ((isdigit(argv[i][j]) && argv[i][j + 1] == '-'))
-			|| (isspace(argv[i][j]) && isspace(argv[i][j + 1])))
+			|| ((ft_isdigit(argv[i][j]) && argv[i][j + 1] == '-'))
+			|| (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1])))
 				return (1);
 			j++;
 		}
 		i++;
 	}
-/* 	if (isdup(argv) == true)
-		return (1); */
 	return (0);
 }
-
-/*  if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == '+')
-				return (1); */
