@@ -27,19 +27,17 @@ typedef struct s_list
 void	ft_swap(int *a, int *b);
 int		swap(t_list **stack);
 int		sa(t_list **stack_a);
-int		sb(t_list **stack_b);
 int		push(t_list **stack1, t_list **stack2);
 int		pa(t_list **stack_a, t_list **stack_b);
 int		pb(t_list **stack_b, t_list **stack_a);
 int		rotate(t_list **stack);
 int		ra(t_list **stack_a);
-int		rb(t_list **stack_b);
 void	rr(t_list **stack);
 int		rra(t_list **stack_a);
-int		rrb(t_list **stack_b);
 
 int		ft_check_args(int argc, char **argv, int i);
 int		ft_isdupnode(t_list *stack);
+int		ft_isspace(int input);
 int		isdigit(int c);
 int		ft_isnumber(char *str);
 int		is_sorted(t_list **stack);
@@ -53,11 +51,8 @@ void	print_error(void);
 t_list	*get_smallest(t_list **stack_a);
 
 void	index_stack(t_list **stack);
-//static t_list	*get_next_min(t_list **stack);
-
 void	radix_sort(t_list **stack_a, t_list **stack_b);
 void	smol_sort(t_list **stack_a, t_list **stack_b);
-//static int		get_max_bits(t_list *stack);
 
 t_list	*ft_lstnew(int value);
 t_list	*ft_lstlast(t_list *head);

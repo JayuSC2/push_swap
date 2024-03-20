@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror -Iincludes -g
 
 SRCS =	src/main.c\
 		src/sort.c\
@@ -11,7 +11,6 @@ SRCS =	src/main.c\
 		src/index.c\
 		src/listoperations.c\
 		src/listdelete.c\
-		src/stackoperations.c\
 		src/utils.c\
 		src/frees.c\
 		src/push.c\
