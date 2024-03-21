@@ -21,7 +21,7 @@ int	isnumber(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
@@ -59,8 +59,8 @@ int	ft_isdupnode(t_list *stack)
 
 int	check_overflow(int argc, char **argv)
 {
-	int			i;
 	long int	num;
+	int			i;
 
 	i = 1;
 	if (argc == 2)
@@ -86,10 +86,10 @@ int	ft_check_args(int argc, char **argv, int i)
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((argv[i][j] == '-' && !isdigit(argv[i][j + 1]))
-			|| ((!isdigit(argv[i][j]) && !ft_isspace(argv[i][j])
+			if ((argv[i][j] == '-' && !ft_isdigit(argv[i][j + 1]))
+			|| ((!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j])
 			&& argv[i][j] != '-'))
-			|| ((isdigit(argv[i][j]) && argv[i][j + 1] == '-'))
+			|| ((ft_isdigit(argv[i][j]) && argv[i][j + 1] == '-'))
 			|| (ft_isspace(argv[i][j]) && ft_isspace(argv[i][j + 1])))
 				return (1);
 			j++;
